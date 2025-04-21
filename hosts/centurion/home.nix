@@ -14,7 +14,6 @@
     ../../home/programs/fetch
     ../../home/programs/git
     ../../home/programs/spicetify
-    ../../home/programs/nextcloud
     ../../home/programs/thunar
     ../../home/programs/lazygit
     ../../home/programs/zen
@@ -45,7 +44,8 @@
 
     packages = with pkgs; [
       # Apps
-      bitwarden # Password manager
+      keepassxc # Password manager
+      telegram-desktop # Messenger telegram
       vlc # Video player
       blanket # White-noise app
       obsidian # Note taking app
@@ -60,10 +60,12 @@
       figma-linux
 
       # Dev
+      postman
       go
       nodejs
       python3
-      jq
+      elixir
+      erlang
       just
       pnpm
       air

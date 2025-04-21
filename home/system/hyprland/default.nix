@@ -13,7 +13,6 @@
   inactive-opacity = config.theme.inactive-opacity;
   rounding = config.theme.rounding;
   blur = config.theme.blur;
-  keyboardLayout = config.var.keyboardLayout;
   background = "rgb(" + config.lib.stylix.colors.base00 + ")";
 in {
   imports = [
@@ -96,7 +95,7 @@ in {
 
       cursor = {
         no_hardware_cursors = true;
-        default_monitor = "eDP-2";
+        default_monitor = "eDP-1";
       };
 
       general = {
@@ -180,9 +179,6 @@ in {
       layerrule = ["noanim, launcher" "noanim, ^ags-.*"];
 
       input = {
-        kb_layout = keyboardLayout;
-
-        kb_options = "caps:escape";
         follow_mouse = 1;
         sensitivity = 0.5;
         repeat_delay = 300;

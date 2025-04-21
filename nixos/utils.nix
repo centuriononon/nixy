@@ -24,33 +24,21 @@ in {
     allowReboot = false;
   };
 
-  time = {timeZone = timeZone;};
+  time.timeZone = timeZone;
   i18n.defaultLocale = defaultLocale;
   i18n.extraLocaleSettings = {
-    LC_ADDRESS = extraLocale;
-    LC_IDENTIFICATION = extraLocale;
-    LC_MEASUREMENT = extraLocale;
-    LC_MONETARY = extraLocale;
-    LC_NAME = extraLocale;
-    LC_NUMERIC = extraLocale;
-    LC_PAPER = extraLocale;
-    LC_TELEPHONE = extraLocale;
-    LC_TIME = extraLocale;
+    LC_ALL = extraLocale;
   };
 
   services = {
-    xserver = {
-      enable = true;
-      xkb.layout = keyboardLayout;
-      xkb.variant = "";
-    };
+    xserver.enable = false;
     gnome.gnome-keyring.enable = true;
     psd = {
       enable = true;
       resyncTimer = "10m";
     };
   };
-  console.keyMap = keyboardLayout;
+  console.keyMap = "us";
 
   environment.variables = {
     XDG_DATA_HOME = "$HOME/.local/share";
@@ -74,6 +62,7 @@ in {
     power-profiles-daemon.enable = true;
     udisks2.enable = true;
   };
+  services.openssh.enable = true;
 
   # enable zsh autocompletion for system packages (systemd, etc)
   environment.pathsToLink = ["/share/zsh"];

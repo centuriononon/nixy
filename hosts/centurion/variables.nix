@@ -3,9 +3,7 @@
   lib,
   ...
 }: {
-  imports = [
-    ../../themes/nixy.nix
-  ];
+  imports = [../../themes/nixy.nix];
 
   config.var = {
     hostname = "nixy";
@@ -15,11 +13,11 @@
       + config.var.username
       + "/.config/nixos"; # The path of the nixos configuration directory
 
-    keyboardLayout = "us";
+    keyboardLayout = "us,ru";
     location = "Brazil";
     timeZone = "Etc/GMT+3";
     defaultLocale = "en_US.UTF-8";
-    extraLocale = "ru_RU.UTF-8";
+    extraLocale = "en_US.UTF-8";
     git = {
       username = "centurion";
       email = "centurionoff.dev@proton.me";

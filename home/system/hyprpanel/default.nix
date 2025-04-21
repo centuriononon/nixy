@@ -42,6 +42,7 @@ in {
             "left" = [ "dashboard" "workspaces" "windowtitle" ];
             "middle" = [ "media" "cava" ];
             "right" = [
+	      "kbinput"
               "volume"
               "bluetooth"
               "network"
@@ -80,7 +81,7 @@ in {
       "bar.launcher.icon" = "";
       "theme.bar.transparent" = "${if transparent then "true" else "false"}";
       "bar.workspaces.show_numbered" = false;
-      "bar.workspaces.workspaces" = 5;
+      "bar.workspaces.workspaces" = 9;
       "bar.workspaces.hideUnoccupied" = false;
       "bar.windowtitle.label" = true;
       "bar.volume.label" = false;
