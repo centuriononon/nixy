@@ -1,25 +1,28 @@
-{ config, lib, ... }: {
+{
+  config,
+  lib,
+  ...
+}: {
   imports = [
-    # Choose your theme here:
     ../../themes/nixy.nix
   ];
 
   config.var = {
     hostname = "nixy";
-    username = "hadi";
-    configDirectory = "/home/" + config.var.username
+    username = "centurion";
+    configDirectory =
+      "/home/"
+      + config.var.username
       + "/.config/nixos"; # The path of the nixos configuration directory
 
-    keyboardLayout = "fr";
-
-    location = "Paris";
-    timeZone = "Europe/Paris";
+    keyboardLayout = "us";
+    location = "Brazil";
+    timeZone = "Etc/GMT+3";
     defaultLocale = "en_US.UTF-8";
-    extraLocale = "fr_FR.UTF-8";
-
+    extraLocale = "ru_RU.UTF-8";
     git = {
-      username = "Hadi";
-      email = "112569860+anotherhadi@users.noreply.github.com";
+      username = "centurion";
+      email = "centurionoff.dev@proton.me";
     };
 
     autoUpgrade = false;
@@ -30,7 +33,7 @@
   options = {
     var = lib.mkOption {
       type = lib.types.attrs;
-      default = { };
+      default = {};
     };
   };
 }

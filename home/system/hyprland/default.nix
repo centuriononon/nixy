@@ -1,6 +1,11 @@
 # So best window tiling manager
-{ pkgs, config, inputs, lib, ... }:
-let
+{
+  pkgs,
+  config,
+  inputs,
+  lib,
+  ...
+}: let
   border-size = config.theme.border-size;
   gaps-in = config.theme.gaps-in;
   gaps-out = config.theme.gaps-out;
@@ -11,14 +16,10 @@ let
   keyboardLayout = config.var.keyboardLayout;
   background = "rgb(" + config.lib.stylix.colors.base00 + ")";
 in {
-
   imports = [
     ./animations.nix
     ./bindings.nix
     ./polkitagent.nix
-    ./keyboard-backlight.nix # CHANGEME: This is for my laptop only
-    # FIXME: Broken on unstable
-    # ./hyprspace.nix
   ];
 
   home.packages = with pkgs; [
@@ -67,12 +68,7 @@ in {
         "systemctl --user enable --now nextcloud-client.service  &"
       ];
 
-      monitor = [
-        "eDP-2,highres,0x0,1" # My internal laptop screen
-        "desc:AOC U34G2G1 0x00000E06,3440x1440@99.98,auto,1" # My external monitor
-        "desc:United Microelectr Corporation UMC SHARP,3840x2160,auto,2" # TV
-        ",prefered,auto,1" # default
-      ];
+      monitor = [",prefered,auto,1"];
 
       env = [
         "XDG_CURRENT_DESKTOP,Hyprland"
@@ -96,7 +92,6 @@ in {
         "WLR_NO_HARDWARE_CURSORS,1"
         "SDL_VIDEODRIVER,wayland"
         "CLUTTER_BACKEND,wayland"
-        "AQ_DRM_DEVICES,/dev/dri/card2:/dev/dri/card1" # CHANGEME: Related to the GPU
       ];
 
       cursor = {
@@ -123,7 +118,10 @@ in {
           render_power = 3;
         };
         blur = {
-          enabled = if blur then "true" else "false";
+          enabled =
+            if blur
+            then "true"
+            else "false";
           size = 18;
         };
       };
@@ -134,7 +132,7 @@ in {
         mfact = 0.5;
       };
 
-      gestures = { workspace_swipe = true; };
+      gestures = {workspace_swipe = true;};
 
       misc = {
         vfr = true;
@@ -179,7 +177,7 @@ in {
         "size 640 400, class:^(.*jetbrains.*)$, title:^(splash)$"
       ];
 
-      layerrule = [ "noanim, launcher" "noanim, ^ags-.*" ];
+      layerrule = ["noanim, launcher" "noanim, ^ags-.*"];
 
       input = {
         kb_layout = keyboardLayout;
@@ -196,7 +194,6 @@ in {
           clickfinger_behavior = true;
         };
       };
-
     };
   };
 }

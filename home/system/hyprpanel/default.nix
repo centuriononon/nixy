@@ -42,10 +42,8 @@ in {
             "left" = [ "dashboard" "workspaces" "windowtitle" ];
             "middle" = [ "media" "cava" ];
             "right" = [
-              "systray"
               "volume"
               "bluetooth"
-              "battery"
               "network"
               "clock"
               "notifications"
@@ -99,6 +97,7 @@ in {
       "theme.osd.muted_zero" = true;
       "menus.clock.weather.location" = "${location}";
       "menus.clock.weather.unit" = "metric";
+      "menus.dashboard.directories.enabled" = false;
       "menus.dashboard.powermenu.confirmation" = false;
       "menus.dashboard.powermenu.avatar.image" = "~/.face.icon";
 

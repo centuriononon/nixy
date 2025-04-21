@@ -1,5 +1,8 @@
-{ pkgs, config, ... }: {
-
+{
+  pkgs,
+  config,
+  ...
+}: {
   imports = [
     # Mostly user-specific configuration
     ./variables.nix
@@ -34,8 +37,6 @@
     ../../home/system/mime
     ../../home/system/udiskie
     ../../home/system/clipman
-
-    ./secrets # CHANGEME: You should probably remove this line, this is where I store my secrets
   ];
 
   home = {
@@ -88,7 +89,7 @@
     ];
 
     # Import my profile picture, used by the hyprpanel dashboard
-    file.".face.icon" = { source = ./profile_picture.png; };
+    file.".face.icon" = {source = ./profile_picture.png;};
 
     # Don't touch this
     stateVersion = "24.05";
