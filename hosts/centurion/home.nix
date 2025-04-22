@@ -2,7 +2,8 @@
   pkgs,
   config,
   ...
-}: {
+}:
+{
   imports = [
     # Mostly user-specific configuration
     ./variables.nix
@@ -91,7 +92,9 @@
     ];
 
     # Import my profile picture, used by the hyprpanel dashboard
-    file.".face.icon" = {source = ./profile_picture.png;};
+    file.".face.icon" = {
+      source = ./profile_picture.png;
+    };
 
     # Don't touch this
     stateVersion = "24.05";

@@ -1,141 +1,109 @@
-{
-  programs.nixvim = {
-    globals.mapleader = " ";
-    diagnostics = {
-      virtual_text = true;
-      virtual_improved = { current_line = "only"; };
+{ lib, ... }: {
+          programs.nixvim.globals.mapleader = " ";
+        programs.nixvim.globals.maplocalleader = " ";
+
+  programs.nixvim.opts = {
+    clipboard = "unnamedplus";
+
+    completeopt = [ "menu" "menuone" "noselect" ];
+
+    updatetime = 100; # Faster completion
+
+    # Line numbers
+    relativenumber = true; # Relative line numbers
+    number = true; # Display the absolute line number of the current line
+    hidden = true; # Keep closed buffer open in the background
+    mouse = "a"; # Enable mouse control
+    mousemodel = "extend"; # Mouse right-click extends the current selection
+    splitbelow = true; # A new window is put below the current one
+    splitright = true; # A new window is put right of the current one
+
+    swapfile = false; # Disable the swap file
+    modeline = true; # Tags such as 'vim:ft=sh'
+    modelines = 100; # Sets the type of mode-lines
+    undofile = true; # Automatically save and restore undo history
+    incsearch =
+      true; # Incremental search: show match for partly typed search command
+    ignorecase =
+      true; # When the search query is lower-case, match both lower and upper-case
+    #   patterns
+    smartcase =
+      true; # Override the 'ignorecase' option if the search pattern contains upper
+    #   case characters
+    cursorline = true; # Highlight the screen line of the cursor
+    cursorcolumn = false; # Highlight the screen column of the cursor
+    signcolumn = "yes"; # Whether to show the sign column
+    colorcolumn = "100"; # Columns to highlight
+    laststatus = 3; # When to use a status line for the last window
+    fileencoding = "utf-8"; # File-content encoding for the current buffer
+    termguicolors = true; # Enables 24-bit RGB color in the |TUI|
+    spelllang = lib.mkDefault [ "en_us" ]; # Spell check languages
+    spell = true; # Highlight spelling mistakes (local to window)
+    wrap = false; # Prevent text from wrapping
+
+    # Tab options
+    tabstop =
+      2; # Number of spaces a <Tab> in the text stands for (local to buffer)
+    shiftwidth =
+      2; # Number of spaces used for each step of (auto)indent (local to buffer)
+    softtabstop =
+      0; # If non-zero, number of spaces to insert for a <Tab> (local to buffer)
+    expandtab = true; # Expand <Tab> to spaces in Insert mode (local to buffer)
+    autoindent = true; # Do clever auto-indenting
+
+    textwidth =
+      0; # Maximum width of text that is being inserted.  A longer line will be
+    #   broken after white space to get this width.
+
+    # Folding
+    foldlevel = 99; # Folds with a level higher than this number will be closed
+    foldcolumn = "1";
+    foldenable = true;
+    foldlevelstart = -1;
+    fillchars = {
+      horiz = "━";
+      horizup = "┻";
+      horizdown = "┳";
+      vert = "┃";
+      vertleft = "┫";
+      vertright = "┣";
+      verthoriz = "╋";
+
+      eob = " ";
+      diff = "╱";
+
+      fold = " ";
+      foldopen = "";
+      foldclose = "";
+
+      msgsep = "‾";
     };
-    opts = {
-      autoindent = true;
 
-      smartindent = true;
+    # backspace = { append = [ "nostop" ]; };
+    breakindent = true;
+    cmdheight = 0;
+    copyindent = true;
+    # diffopt = { append = [ "algorithm:histogram" "linematch:60" ]; };
+    # fillchars = { eob = " "; };
+    history = 100;
+    infercase = true;
+    linebreak = true;
+    preserveindent = true;
+    pumheight = 10;
+    # shortmess = { append = { s = true; I = true; }; };
+    showmode = false;
+    showtabline = 2;
+    timeoutlen = 500;
+    title = true;
+    # viewoptions = { remove = [ "curdir" ]; };
+    virtualedit = "block";
+    writebackup = false;
 
-      incsearch = true;
-      hlsearch = true;
-      wildmode = "list:longest";
-      scrolloff = 8;
-
-      swapfile = false;
-      conceallevel = 3;
-      clipboard = "unnamed,unnamedplus";
-
-      # Don't stop backspace at insert
-      backspace.__raw = ''
-        vim.list_extend(vim.opt.backspace:get(), { "nostop" })
-      '';
-
-      # Keep visual indentation on wrapped lines
-      breakindent = true;
-
-      # Hide command line unless needed
-      cmdheight = 0;
-
-      # Insert mode completion options
-      completeopt = [ "menu" "menuone" "noselect" ];
-
-      # Raise a dialog asking if you wish to save the current file(s)
-      confirm = true;
-
-      # Copy previous indentation on autoindenting
-      copyindent = true;
-
-      # Highlight current line
-      cursorline = true;
-
-      # Expand <Tab> to spaces
-      expandtab = true;
-
-      # Disable `~` on nonexistent lines
-      fillchars = { eob = " "; };
-
-      # Enable fold with all code unfolded
-      foldcolumn = "1";
-      foldenable = true;
-      foldlevel = 99;
-      foldlevelstart = 99;
-
-      # Ignore case in search patterns
-      ignorecase = true;
-
-      # Show substitution preview in split window
-      inccommand = "split";
-
-      # Infer casing on word completion
-      infercase = true;
-
-      # Global statusline
-      laststatus = 3;
-
-      # Wrap lines at 'breakat'
-      linebreak = true;
-
-      # Enable mouse support
-      mouse = "a";
-
-      # Show line numbers
-      number = true;
-
-      # Preserve indentation as much as possible
-      preserveindent = true;
-
-      # Height of the popup menu
-      pumheight = 10;
-
-      # Display line numbers relative to current line
-      relativenumber = true;
-
-      # Minimal number of lines to keep around the cursor
-      # This has the effect to move the view along with current line
-      #scrolloff = 999;
-
-      # Number of spaces to use for indentation
-      shiftwidth = 2;
-
-      # Disable showing modes in command line
-      showmode = false;
-
-      # Always show tabline
-      showtabline = 2;
-
-      # Show signs column
-      signcolumn = "yes";
-
-      # Override ignorecase if search pattern contains uppercase characters
-      smartcase = true;
-
-      # Number of spaces input on <Tab>
-      softtabstop = 2;
-
-      # Open horizontal split below (:split)
-      splitbelow = true;
-
-      # Open vertical split to the right (:vsplit)
-      splitright = true;
-
-      # Number of spaces to represent a <Tab>
-      tabstop = 2;
-
-      # Enables 24-bit RGB color
-      termguicolors = true;
-
-      # Shorter timeout duration
-      timeoutlen = 500;
-
-      # Set window title to the filename
-      title = true;
-
-      # Save undo history to undo file (in $XDG_STATE_HOME/nvim/undo)
-      undofile = true;
-
-      # Enable virtual edit in visual block mode
-      # This has the effect of selecting empty cells beyond lines boundaries
-      virtualedit = "block";
-
-      # Disable line wrapping
-      wrap = false;
-
-      # Disable making a backup before overwriting a file
-      writebackup = false;
-    };
+    lazyredraw = false; # Faster scrolling if enabled, breaks noice
+    synmaxcol = 240; # Max column for syntax highlight
+    showmatch = true; # when closing a bracket, briefly flash the matching one
+    matchtime = 1; # duration of that flashing n deci-seconds
+    startofline = true; # motions like "G" also move to the first char
+    report = 9001; # disable "x more/fewer lines" messages
   };
 }

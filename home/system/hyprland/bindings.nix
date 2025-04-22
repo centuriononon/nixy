@@ -2,7 +2,6 @@
   wayland.windowManager.hyprland.settings = {
     bind = [
       "$mod,RETURN, exec, uwsm app -- ${pkgs.kitty}/bin/kitty" # Kitty
-      "$mod,E, exec,  uwsm app -- ${pkgs.xfce.thunar}/bin/thunar" # Thunar
       "$mod,X, exec, powermenu" # Powermenu
       "$mod,SPACE, exec, menu" # Launcher
 
@@ -11,19 +10,17 @@
       "$mod,Cyrillic_ef,exec,hyprctl keyword input:kb_layout us"
 
       # Programs
-      "$shiftMod,1, exec,  uwsm app -- zen-beta"
-      "$shiftMod,2, exec,  uwsm app -- postman"
-      "$shiftMod,3, exec,  uwsm app -- ${pkgs.planify}/bin/io.github.alainm23.planify"
-      "$shiftMod,4, exec,  uwsm app -- telegram-desktop"
+      "ALT,1, exec,  uwsm app -- zen-beta"
+      "ALT,2, exec,  uwsm app -- postman"
+      "ALT,3, exec,  uwsm app -- ${pkgs.planify}/bin/io.github.alainm23.planify"
+      "ALT,4, exec,  uwsm app -- telegram-desktop"
 
+      # Window Control
       "$mod,W, killactive," # Close window
-      "$mod,T, togglefloating," # Toggle Floating
+      "$mod,V, togglefloating," # Toggle Floating
       "$mod,F, fullscreen" # Toggle Fullscreen
       "$mod,M, fullscreenstate, 1" # Toggle Maximize
-      "$mod,H, movefocus, l" # Move focus left
-      "$mod,L, movefocus, r" # Move focus Right
-      "$mod,K, movefocus, u" # Move focus Up
-      "$mod,J, movefocus, d" # Move focus Down
+      "$mod,T, togglesplit," # Toggle split
 
       "$mod,PRINT, exec, screenshot region" # Screenshot region
       ",PRINT, exec, screenshot monitor" # Screenshot monitor
@@ -33,6 +30,12 @@
       "$shiftMod,T, exec, hyprpanel-toggle" # Toggle hyprpanel
       "$shiftMod,C, exec, clipboard" # Clipboard picker with wofi
       "$shiftMod,E, exec, ${pkgs.wofi-emoji}/bin/wofi-emoji" # Emoji picker with wofi
+
+      # Window focus movement (like vim)
+      "$mod,H, movefocus, l" # Move focus left
+      "$mod,L, movefocus, r" # Move focus Right
+      "$mod,K, movefocus, u" # Move focus Up
+      "$mod,J, movefocus, d" # Move focus Down
 
       # Switching Workspaces
       "$mod,1, workspace, 1" 
@@ -46,22 +49,22 @@
       "$mod,9, workspace, 9" 
       "$mod,0, workspace, 10" 
 
-      # Moving to Workspaces
-      "$mod SHIFT,1, movetoworkspace, 1"
-      "$mod SHIFT,2, movetoworkspace, 2"
-      "$mod SHIFT,3, movetoworkspace, 3"
-      "$mod SHIFT,4, movetoworkspace, 4"
-      "$mod SHIFT,5, movetoworkspace, 5"
-      "$mod SHIFT,6, movetoworkspace, 6"
-      "$mod SHIFT,7, movetoworkspace, 7"
-      "$mod SHIFT,8, movetoworkspace, 8"
-      "$mod SHIFT,9, movetoworkspace, 9"
-      "$mod SHIFT,0, movetoworkspace, 10"
+      # Moving Windows to Workspaces
+      "$shiftMod,1, movetoworkspace, 1"
+      "$shiftMod,2, movetoworkspace, 2"
+      "$shiftMod,3, movetoworkspace, 3"
+      "$shiftMod,4, movetoworkspace, 4"
+      "$shiftMod,5, movetoworkspace, 5"
+      "$shiftMod,6, movetoworkspace, 6"
+      "$shiftMod,7, movetoworkspace, 7"
+      "$shiftMod,8, movetoworkspace, 8"
+      "$shiftMod,9, movetoworkspace, 9"
+      "$shiftMod,0, movetoworkspace, 10"
     ];
 
     bindm = [
       "$mod,mouse:272, movewindow" # Move Window (mouse)
-      "$mod,R, resizewindow" # Resize Window (mouse)
+      "$mod,mouse:273, resizewindow" # Resize Window (mouse)
     ];
 
     bindl = [
@@ -69,6 +72,14 @@
       "$mod,F5, exec, ${pkgs.playerctl}/bin/playerctl play-pause" # Play/Pause Song
       "$mod,F6, exec, ${pkgs.playerctl}/bin/playerctl previous" # Previous Song
       "$mod,F7, exec, ${pkgs.playerctl}/bin/playerctl next" # Next Song
+    ];
+
+    bindel = [
+      # Resize windows
+      "$shiftMod, L, resizeactive, 20 0"
+      "$shiftMod, H, resizeactive, -20 0"
+      "$shiftMod, K, resizeactive, 0 -20"
+      "$shiftMod, J, resizeactive, 0 20"
     ];
 
     bindle = [

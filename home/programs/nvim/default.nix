@@ -1,16 +1,19 @@
-# Nixvim is a NixOS module that installs and configures Neovim
 { inputs, ... }: {
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
     ./plugins/cmp.nix
-    ./plugins/floaterm.nix
+    ./plugins/lz-n.nix
+    ./plugins/git-conflict.nix
+    ./plugins/conform.nix
     ./plugins/git.nix
+    ./plugins/lightbulb.nix
     ./plugins/lsp.nix
+    ./plugins/markdown-preview.nix
     ./plugins/markdown.nix
-    ./plugins/mini.nix
-    ./plugins/picker.nix
-    ./plugins/snacks.nix
+    ./plugins/neo-tree.nix
+    ./plugins/telescope.nix
     ./plugins/trouble.nix
+    ./plugins/kanagawa.nix
     ./plugins/utils.nix
 
     ./options.nix

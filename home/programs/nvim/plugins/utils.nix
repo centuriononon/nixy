@@ -5,33 +5,21 @@
       WhichKeySeparator.bg = "#${config.lib.stylix.colors.base00}";
     };
     plugins = {
-      bufferline.enable = true;
       copilot-vim = {
         enable = true;
         # FIXME: Temp issue solving
         settings.node_command = lib.getExe pkgs.nodejs_20;
       };
+      web-devicons.enable = true;
       flash.enable = true;
-      tmux-navigator.enable = true;
       todo-comments.enable = true;
-      lualine = { enable = true; };
+      lualine.enable = true;
       aerial.enable = true;
-      treesitter = {
-        enable = true;
-        nixGrammars = true;
-        settings = {
-          ensure_installed = "all";
-          indent.enable = true;
-          highlight.enable = true;
-        };
-      };
     };
-    keymaps = [
-      {
-        key = "<leader>ct";
-        action = "<cmd>AerialToggle<cr>";
-        options.desc = "Aerial (tags)";
-      }
-    ];
+    keymaps = [{
+      key = "<leader>ct";
+      action = "<cmd>AerialToggle<cr>";
+      options.desc = "Aerial (tags)";
+    }];
   };
 }

@@ -38,7 +38,7 @@
     keymaps = [
       # General Mappings
       {
-        key = "s";
+        key = "m";
         action = "<cmd>lua require('flash').jump()<cr>";
         options.desc = "Flash";
       }
@@ -51,46 +51,6 @@
         key = "<C-tab>";
         action = "<cmd>bnext<cr>";
         options.desc = "Next Buffer";
-      }
-
-      # Tmux
-      {
-        key = "<C-h>";
-        action = "<cmd>TmuxNavigateLeft<cr>";
-      }
-      {
-        key = "<C-j>";
-        action = "<cmd>TmuxNavigateDown<cr>";
-      }
-      {
-        key = "<C-k>";
-        action = "<cmd>TmuxNavigateUp<cr>";
-      }
-      {
-        key = "<C-l>";
-        action = "<cmd>TmuxNavigateRight<cr>";
-      }
-
-      # Disable Arrow Keys in Normal Mode
-      {
-        key = "<Up>";
-        action = "<Nop>";
-        options.desc = "Disable Up Arrow";
-      }
-      {
-        key = "<Down>";
-        action = "<Nop>";
-        options.desc = "Disable Down Arrow";
-      }
-      {
-        key = "<Left>";
-        action = "<Nop>";
-        options.desc = "Disable Left Arrow";
-      }
-      {
-        key = "<Right>";
-        action = "<Nop>";
-        options.desc = "Disable Right Arrow";
       }
 
       # UI

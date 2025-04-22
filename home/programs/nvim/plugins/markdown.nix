@@ -1,8 +1,4 @@
-{ config, ... }:
-let
-  accent = "#${config.lib.stylix.colors.base0D}";
-  muted = "#${config.lib.stylix.colors.base03}";
-in {
+{
   programs.nixvim = {
     extraFiles."after/ftplugin/markdown.lua".text = ''
       vim.bo.tabstop = 2
@@ -11,9 +7,7 @@ in {
       vim.wo.cursorline = false
     '';
 
-    # Plugins
     plugins = {
-      # Render UI elements
       render-markdown = {
         enable = true;
         settings = { completions.lsp.enabled = true; };
