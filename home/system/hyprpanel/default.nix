@@ -81,7 +81,7 @@ in {
       "bar.launcher.icon" = "";
       "theme.bar.transparent" = "${if transparent then "true" else "false"}";
       "bar.workspaces.show_numbered" = false;
-      "bar.workspaces.workspaces" = 9;
+      "bar.workspaces.workspaces" = 10;
       "bar.workspaces.hideUnoccupied" = false;
       "bar.windowtitle.label" = true;
       "bar.volume.label" = false;
