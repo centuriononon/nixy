@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   wayland.windowManager.hyprland.settings = {
     bind = [
       "$mod,RETURN, exec, uwsm app -- ${pkgs.kitty}/bin/kitty" # Kitty
@@ -20,7 +21,8 @@
       "$mod,V, togglefloating," # Toggle Floating
       "$mod,F, fullscreen" # Toggle Fullscreen
       "$mod,M, fullscreenstate, 1" # Toggle Maximize
-      "$mod,T, togglesplit," # Toggle split
+      "$mod,T, togglesplit," # Toggle windows orientation
+      "$mod,R, layoutmsg, orientationnext" # Rotate windows
 
       "$mod,PRINT, exec, screenshot region" # Screenshot region
       ",PRINT, exec, screenshot monitor" # Screenshot monitor
@@ -38,16 +40,16 @@
       "$mod,J, movefocus, d" # Move focus Down
 
       # Switching Workspaces
-      "$mod,1, workspace, 1" 
-      "$mod,2, workspace, 2" 
-      "$mod,3, workspace, 3" 
-      "$mod,4, workspace, 4" 
-      "$mod,5, workspace, 5" 
-      "$mod,6, workspace, 6" 
-      "$mod,7, workspace, 7" 
-      "$mod,8, workspace, 8" 
-      "$mod,9, workspace, 9" 
-      "$mod,0, workspace, 10" 
+      "$mod,1, workspace, 1"
+      "$mod,2, workspace, 2"
+      "$mod,3, workspace, 3"
+      "$mod,4, workspace, 4"
+      "$mod,5, workspace, 5"
+      "$mod,6, workspace, 6"
+      "$mod,7, workspace, 7"
+      "$mod,8, workspace, 8"
+      "$mod,9, workspace, 9"
+      "$mod,0, workspace, 10"
 
       # Moving Windows to Workspaces
       "$shiftMod,1, movetoworkspace, 1"
@@ -76,10 +78,10 @@
 
     bindel = [
       # Resize windows
-      "$shiftMod, L, resizeactive, 20 0"
-      "$shiftMod, H, resizeactive, -20 0"
-      "$shiftMod, K, resizeactive, 0 -20"
-      "$shiftMod, J, resizeactive, 0 20"
+      "$mod ALT, L, resizeactive, 20 0"
+      "$mod ALT, H, resizeactive, -20 0"
+      "$mod ALT, K, resizeactive, 0 -20"
+      "$mod ALT, J, resizeactive, 0 20"
     ];
 
     bindle = [

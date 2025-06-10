@@ -21,11 +21,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixvim = {
-      url =
-        "github:nix-community/nixvim/d81f37256d0a8691b837b74979d27bf89be8ecdd";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -37,20 +32,22 @@
     search-nixos-api.url = "github:anotherhadi/search-nixos-api";
   };
 
-  outputs = inputs@{ nixpkgs, ... }: {
-    nixosConfigurations = {
-      nixy = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          {
-            nixpkgs.overlays = [ inputs.hyprpanel.overlay ];
-            _module.args = { inherit inputs; };
-          }
-          inputs.home-manager.nixosModules.home-manager
-          inputs.stylix.nixosModules.stylix
-          ./hosts/centurion/configuration.nix
-        ];
+  outputs =
+    inputs@{ nixpkgs, ... }:
+    {
+      nixosConfigurations = {
+        nixy = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            {
+              nixpkgs.overlays = [ inputs.hyprpanel.overlay ];
+              _module.args = { inherit inputs; };
+            }
+            inputs.home-manager.nixosModules.home-manager
+            inputs.stylix.nixosModules.stylix
+            ./hosts/centurion/configuration.nix
+          ];
+        };
       };
     };
-  };
 }

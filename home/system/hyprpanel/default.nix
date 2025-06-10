@@ -26,8 +26,8 @@ let
   notificationOpacity = 90;
 
   location = config.var.location;
-in {
-
+in
+{
   imports = [ inputs.hyprpanel.homeManagerModules.hyprpanel ];
 
   programs.hyprpanel = {
@@ -39,10 +39,17 @@ in {
       layout = {
         "bar.layouts" = {
           "*" = {
-            "left" = [ "dashboard" "workspaces" "windowtitle" ];
-            "middle" = [ "media" "cava" ];
+            "left" = [
+              "dashboard"
+              "workspaces"
+              "windowtitle"
+            ];
+            "middle" = [
+              "media"
+              "cava"
+            ];
             "right" = [
-	      "kbinput"
+              "kbinput"
               "volume"
               "bluetooth"
               "network"
@@ -57,14 +64,12 @@ in {
     override = {
       "theme.font.name" = "${font}";
       "theme.font.size" = "${fontSize}px";
-      "theme.bar.outer_spacing" =
-        "${if floating && transparent then "0" else "8"}px";
-      "theme.bar.buttons.y_margins" =
-        "${if floating && transparent then "0" else "8"}px";
+      "theme.bar.outer_spacing" = "${if floating && transparent then "0" else "8"}px";
+      "theme.bar.buttons.y_margins" = "${if floating && transparent then "0" else "8"}px";
       "theme.bar.buttons.spacing" = "0.3em";
       "theme.bar.buttons.radius" = "${
-          if transparent then toString rounding else toString (rounding - 8)
-        }px";
+        if transparent then toString rounding else toString (rounding - 8)
+      }px";
       "theme.bar.floating" = "${if floating then "true" else "false"}";
       "theme.bar.buttons.padding_x" = "0.8rem";
       "theme.bar.buttons.padding_y" = "0.4rem";
@@ -72,10 +77,8 @@ in {
       "theme.bar.buttons.workspaces.active" = "${accent}";
       "theme.bar.buttons.workspaces.available" = "${accent-alt}";
       "theme.bar.buttons.workspaces.occupied" = "${accent-alt}";
-      "theme.bar.margin_top" =
-        "${if position == "top" then toString (gaps-in * 2) else "0"}px";
-      "theme.bar.margin_bottom" =
-        "${if position == "top" then "0" else toString (gaps-in * 2)}px";
+      "theme.bar.margin_top" = "${if position == "top" then toString (gaps-in * 2) else "0"}px";
+      "theme.bar.margin_bottom" = "${if position == "top" then "0" else toString (gaps-in * 2)}px";
       "theme.bar.margin_sides" = "${toString gaps-out}px";
       "theme.bar.border_radius" = "${toString rounding}px";
       "bar.launcher.icon" = "";
@@ -118,8 +121,7 @@ in {
       "menus.dashboard.shortcuts.right.shortcut1.command" = "hyprpicker -a";
       "menus.dashboard.shortcuts.right.shortcut1.tooltip" = "Color Picker";
       "menus.dashboard.shortcuts.right.shortcut3.icon" = "󰄀";
-      "menus.dashboard.shortcuts.right.shortcut3.command" =
-        "screenshot region swappy";
+      "menus.dashboard.shortcuts.right.shortcut3.command" = "screenshot region swappy";
       "menus.dashboard.shortcuts.right.shortcut3.tooltip" = "Screenshot";
 
       "theme.bar.menus.monochrome" = true;
@@ -147,17 +149,14 @@ in {
       "theme.bar.menus.tooltip.text" = "${foreground}";
       "theme.bar.menus.dropdownmenu.background" = "${background-alt}";
       "theme.bar.menus.dropdownmenu.text" = "${foreground}";
-      "theme.bar.background" = "${background
-        + (if transparentButtons && transparent then "00" else "")}";
+      "theme.bar.background" = "${background + (if transparentButtons && transparent then "00" else "")}";
       "theme.bar.buttons.style" = "default";
       "theme.bar.buttons.monochrome" = true;
-      "theme.bar.buttons.text" = if transparent && transparentButtons then
-        "${foregroundOnWallpaper}"
-      else
-        "${foreground}";
-      "theme.bar.buttons.background" =
-        "${(if transparent then background else background-alt)
-        + (if transparentButtons then "00" else "")}";
+      "theme.bar.buttons.text" =
+        if transparent && transparentButtons then "${foregroundOnWallpaper}" else "${foreground}";
+      "theme.bar.buttons.background" = "${
+        (if transparent then background else background-alt) + (if transparentButtons then "00" else "")
+      }";
       "theme.bar.buttons.icon" = "${accent}";
       "theme.bar.buttons.notifications.background" = "${background-alt}";
       "theme.bar.buttons.hover" = "${background}";
@@ -182,8 +181,7 @@ in {
       "bar.workspaces.showApplicationIcons" = true;
       "bar.workspaces.showWsIcons" = true;
       "theme.bar.dropdownGap" = "4.5em";
-      "theme.bar.menus.shadow" =
-        "${if transparent then "0 0 0 0" else "0px 0px 3px 1px #16161e"}";
+      "theme.bar.menus.shadow" = "${if transparent then "0 0 0 0" else "0px 0px 3px 1px #16161e"}";
       "bar.customModules.cava.showIcon" = false;
       "bar.customModules.cava.stereo" = true;
       "bar.customModules.cava.showActiveOnly" = true;

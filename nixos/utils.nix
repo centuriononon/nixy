@@ -2,15 +2,16 @@
   pkgs,
   config,
   ...
-}: let
+}:
+let
   hostname = config.var.hostname;
-  keyboardLayout = config.var.keyboardLayout;
   configDir = config.var.configDirectory;
   timeZone = config.var.timeZone;
   defaultLocale = config.var.defaultLocale;
   extraLocale = config.var.extraLocale;
   autoUpgrade = config.var.autoUpgrade;
-in {
+in
+{
   networking.hostName = hostname;
 
   networking.networkmanager.enable = true;
@@ -20,7 +21,11 @@ in {
     enable = autoUpgrade;
     dates = "04:00";
     flake = "${configDir}";
-    flags = ["--update-input" "nixpkgs" "--commit-lock-file"];
+    flags = [
+      "--update-input"
+      "nixpkgs"
+      "--commit-lock-file"
+    ];
     allowReboot = false;
   };
 
@@ -55,9 +60,11 @@ in {
     dbus = {
       enable = true;
       implementation = "broker";
-      packages = with pkgs; [gcr gnome-settings-daemon];
+      packages = with pkgs; [
+        gcr
+        gnome-settings-daemon
+      ];
     };
-    gvfs.enable = true;
     upower.enable = true;
     power-profiles-daemon.enable = true;
     udisks2.enable = true;
@@ -65,7 +72,7 @@ in {
   services.openssh.enable = true;
 
   # enable zsh autocompletion for system packages (systemd, etc)
-  environment.pathsToLink = ["/share/zsh"];
+  environment.pathsToLink = [ "/share/zsh" ];
 
   # Faster rebuilding
   documentation = {
@@ -93,11 +100,14 @@ in {
     enable = true;
     xdgOpenUsePortal = true;
     config = {
-      common.default = ["gtk"];
-      hyprland.default = ["gtk" "hyprland"];
+      common.default = [ "gtk" ];
+      hyprland.default = [
+        "gtk"
+        "hyprland"
+      ];
     };
 
-    extraPortals = [pkgs.xdg-desktop-portal-gtk];
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 
   security = {

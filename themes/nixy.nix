@@ -1,4 +1,10 @@
-{ lib, pkgs, config, ... }: {
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
+{
 
   options.theme = lib.mkOption {
     type = lib.types.attrs;
@@ -12,10 +18,10 @@
       border-size = 2;
       animation-speed = "fast"; # "fast" | "medium" | "slow"
       fetch = "none"; # "nerdfetch" | "neofetch" | "pfetch" | "none"
-      textColorOnWallpaper =
-        config.lib.stylix.colors.base01; # Color of the text displayed on the wallpaper (Lockscreen, display manager, ...)
+      textColorOnWallpaper = config.lib.stylix.colors.base01; # Color of the text displayed on the wallpaper (Lockscreen, display manager, ...)
 
-      bar = { # Hyprpanel
+      bar = {
+        # Hyprpanel
         position = "top"; # "top" | "bottom"
         transparent = false;
         transparentButtons = true;
@@ -78,9 +84,8 @@
 
     polarity = "dark";
     image = pkgs.fetchurl {
-      url =
-        "https://raw.githubusercontent.com/anotherhadi/awesome-wallpapers/refs/heads/main/app/static/wallpapers/vanilla_pink_purple.png";
-      sha256 = "sha256-JJIsoC3MaUB378RfogU7BDuXOuy7Vk048CwfyNe9FYg=";
+      url = "https://raw.githubusercontent.com/anotherhadi/awesome-wallpapers/refs/heads/main/app/static/wallpapers/purple-japan_purple.png";
+      sha256 = "sha256-pmyXNDosm5EvmNF4eiMX2HZv8qNbyX/C4bsSGFHTncM=";
     };
   };
 }

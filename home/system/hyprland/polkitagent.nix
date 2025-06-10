@@ -2,6 +2,20 @@
 { pkgs, ... }: {
   home.packages = with pkgs; [ hyprpolkitagent ];
 
-  wayland.windowManager.hyprland.settings.exec-once =
-    [ "systemctl --user start hyprpolkitagent" ];
+  systemd.user.services.hyprpolkitagent = {
+    Unit = {
+      Description = "Hyprland Polkit Agent";
+      After = [ "graphical-session.target" ];
+    };
+
+    Service = {
+      ExecStart = "${pkgs.hyprpolkitagent}/bin/hyprpolkitagent";
+      Restart = "always";
+      RestartSec = 3;
+    };
+
+    Install = {
+      WantedBy = [ "graphical-session.target" ];
+    };
+  };
 }

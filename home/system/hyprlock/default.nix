@@ -3,7 +3,8 @@
 let
   foreground = "rgba(${config.theme.textColorOnWallpaper}ee)";
   font = config.stylix.fonts.serif.name;
-in {
+in
+{
   programs.hyprlock = {
     enable = true;
     settings = {

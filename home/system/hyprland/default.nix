@@ -2,10 +2,10 @@
 {
   pkgs,
   config,
-  inputs,
   lib,
   ...
-}: let
+}:
+let
   border-size = config.theme.border-size;
   gaps-in = config.theme.gaps-in;
   gaps-out = config.theme.gaps-out;
@@ -14,7 +14,8 @@
   rounding = config.theme.rounding;
   blur = config.theme.blur;
   background = "rgb(" + config.lib.stylix.colors.base00 + ")";
-in {
+in
+{
   imports = [
     ./animations.nix
     ./bindings.nix
@@ -67,7 +68,7 @@ in {
         "systemctl --user enable --now nextcloud-client.service  &"
       ];
 
-      monitor = [",prefered,auto,1"];
+      monitor = [ ",prefered,auto,1" ];
 
       env = [
         "XDG_CURRENT_DESKTOP,Hyprland"
@@ -117,10 +118,7 @@ in {
           render_power = 3;
         };
         blur = {
-          enabled =
-            if blur
-            then "true"
-            else "false";
+          enabled = if blur then "true" else "false";
           size = 18;
         };
       };
@@ -131,7 +129,9 @@ in {
         mfact = 0.5;
       };
 
-      gestures = {workspace_swipe = true;};
+      gestures = {
+        workspace_swipe = true;
+      };
 
       misc = {
         vfr = true;
@@ -176,7 +176,10 @@ in {
         "size 640 400, class:^(.*jetbrains.*)$, title:^(splash)$"
       ];
 
-      layerrule = ["noanim, launcher" "noanim, ^ags-.*"];
+      layerrule = [
+        "noanim, launcher"
+        "noanim, ^ags-.*"
+      ];
 
       input = {
         follow_mouse = 1;

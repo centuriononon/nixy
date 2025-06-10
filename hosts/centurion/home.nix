@@ -10,7 +10,6 @@
 
     # Programs
     ../../home/programs/kitty
-    ../../home/programs/nvim
     ../../home/programs/shell
     ../../home/programs/fetch
     ../../home/programs/git
@@ -45,6 +44,8 @@
 
     packages = with pkgs; [
       # Apps
+      neovim # Neovim text-editor
+      zed-editor # IDE
       keepassxc # Password manager
       telegram-desktop # Messenger telegram
       vlc # Video player
@@ -61,6 +62,8 @@
       figma-linux
 
       # Dev
+      postgresql
+      redis
       postman
       go
       nodejs
@@ -72,13 +75,18 @@
       air
 
       # Utils
+      scrcpy
+      calc
+      television # Fuzzy search for Zed Editor
       zip
       unzip
       optipng
       jpegoptim
       pfetch
+      htop
       btop
       fastfetch
+      docker-compose
 
       # Just cool
       peaclock
