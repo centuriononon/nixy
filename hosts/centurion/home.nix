@@ -73,6 +73,7 @@
       just
       pnpm
       air
+      flyctl
 
       # Utils
       scrcpy
